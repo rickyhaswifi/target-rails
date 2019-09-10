@@ -1,0 +1,12 @@
+<h1>Comment Details</h1>
+
+<h2>Rating: <%= @comment.rating %></h2>
+<p>Title: <%= @comment.title %></p>
+<p>Review: <%= @comment.body %></p>
+<p>Written By: <%= @comment.author %></p>
+
+<div class="controls mt-3 mb-3">
+<%= link_to 'Back', department_path %> |
+<%= link_to 'Edit Comment', edit_item_comment_path(@item) %> |
+<%= link_to 'Delete', [@item, @comment], method: :delete %> |
+</div>

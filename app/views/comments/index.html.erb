@@ -1,0 +1,10 @@
+<h2><%= @comments.length <= 0 ? "Write the first comment!" : "" %></h2> 
+
+  <% @comments.each do |comment| %>
+      <h1><%= link_to comment.title, comment %></h1>
+      <p>Title: <%= comment.title %></p>
+      <p>Review: <%= comment.body %></p>
+  <% end %>
+
+<%= link_to 'New Comment', new_item_comment_path(@item) %>
+

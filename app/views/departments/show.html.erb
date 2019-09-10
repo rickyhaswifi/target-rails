@@ -1,0 +1,37 @@
+<div class="jumbotron jumboimage" style="background-image: url(<%= @department.image_link%>);">
+  <h1 class="display-4"><%= @department.name %></h1>
+  <p class="lead">
+    New fall collection 
+  </p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+</div>
+
+<div class="row">
+<div class="col"></div>
+<div class="col-10">
+
+<!-- LOOP ALL ITEMS OF DEPARTMENT -->
+<div class="department-item-wrapper">
+  <% @department.items.each do |item| %>
+<div class="department-item-show">
+  <div class="department-show-image" style="background-image: url(<%= item.image_link%>);"> </div>
+      <h3><%= link_to item.name, [@department, item] %></h3>
+      <p>$<%= item.price %></p>
+      <button class="btn btn-danger"><%= link_to 'Info', [@department, item] %></button>
+</div>
+  <% end %>
+</div>
+
+<hr>
+
+<div class="controls mt-3 mb-3">
+<%= link_to 'Back', root_path %> |
+<%= link_to 'Update Department Details', edit_department_path %> |
+<%= link_to 'Delete', @department, method: :delete %> |
+<%= link_to 'Add Item', new_department_item_path(@department) %> |
+</div>
+
+</div>
+<div class="col"></div>
+</div>

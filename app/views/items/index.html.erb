@@ -1,0 +1,10 @@
+<h2><%= @items.length <= 0 ? "Add some items" : "" %></h2> 
+
+  <% @items.each do |item| %>
+      <h1><%= link_to item.name, [@department, item] %></h1>
+      <p>Price: <%= item.price %></p>
+      <p>Description: <%= item.description %></p>
+  <% end %>
+
+<%= link_to 'New Item', new_department_item_path(@department) %>
+

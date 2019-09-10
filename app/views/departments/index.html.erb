@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand navbar-light bg-light">
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categories
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <% @department.each do |department| %>
+          <%= link_to department.name, department, class: 'dropdown-item' %>
+    <% end %>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+    <%= form_tag(departments_path,  method: :get) do %>
+  <%= text_field_tag :search, params[:search], placeholder: 'Department',class: 'form-control' %>
+  <%= submit_tag 'Search', name: nil, class: 'btn btn-outline-danger my-2 my-sm-0' %> 
+<% end %>
+    </form>
+  </div>
+</nav>
+
+<!-- END NAV -->
+
+<!-- CONTENT -->
+
+
+<div class="row">
+<div class="col"></div>
+<div class="col-10">
+
+<h1>Welcome to <i class="fas fa-bullseye"></i> Target</h1>
+<h2> <%= @department.length <= 0 ? "Add some departments" : ""  %> </h2>
+
+<% @department.each do |department| %>
+    <div class="department-show">
+    <div class="department-image" style="background-image: url(<%= department.image_link%>);"> </div>
+    <h2> <%= link_to department.name, department %></h2>
+    </div>
+<% end %>
+
+<div class="mt-3 mb-3">
+<button class="btn btn-danger">
+<%= link_to 'Add Department', new_department_path %>
+</button>
+</div>
+
+</div>
+<div class="col"></div>
+</div>

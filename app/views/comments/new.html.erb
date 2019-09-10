@@ -1,0 +1,19 @@
+<h1>Comments Submission</h1>
+
+<%= form_for [@item, @comment] do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title, required: true, class: 'form-control' %>
+    <br>
+    <%= f.label :body %>
+    <%= f.text_area :body, required: true, class: 'form-control' %>
+    <br>
+    <%= f.label 'Rating:' %>
+    <%# f.select :rating, [['⭐⭐⭐⭐⭐',1], ['⭐⭐⭐⭐',2], ['⭐⭐⭐',3], ['⭐⭐',4], ['⭐',5]], required: true, class: 'form-control'%>
+    <%= f.select :rating, ['⭐⭐⭐⭐⭐', '⭐⭐⭐⭐', '⭐⭐⭐', '⭐⭐', '⭐'], class: 'form-control'%>
+    <br>
+    <%= f.label :author %>
+    <%= f.text_field :author, required: true, class: 'form-control' %>
+    <br>
+    <br>
+    <%= f.submit %>
+<% end %>

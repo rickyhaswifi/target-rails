@@ -1,0 +1,19 @@
+<h1>Item Form</h1>
+
+<%= form_for [@department, @item] do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, required: true, class: 'form-control' %>
+    <br>
+    <%= f.label :price %>
+    <%= f.text_field :price, required: true, class: 'form-control' %>
+    <br>
+    <%= f.label :description %>
+    <%= f.text_field :description, required: true, class: 'form-control' %>
+    <br>
+    <%= f.label :image_link %>
+    <%= f.text_field :image_link, required: true, class: 'form-control' %>
+    <br>
+
+    <br>
+    <%= f.submit %>
+<% end %>

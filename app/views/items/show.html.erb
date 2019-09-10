@@ -1,0 +1,57 @@
+<h1><%= @item.name %> Details</h1>
+<hr>
+<div class="row">
+    <div class="col"></div>
+    <div class="col-5">
+    <img src="<%= @item.image_link %>" class="image-show">
+    </div>
+    <div class="col-5">
+        <h3><%= @item.name %></h3>
+    <h3>Price: $<%= @item.price %></h3>
+    <p>Description: <%= @item.description %></p>
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#itemModalCenter">
+  Add to cart
+</button>
+    </div>
+    <div class="col"></div>
+</div>
+
+<hr>
+<h1 class="mt-3 mb-3"><%= @item.name %> Reviews</h1>
+<hr>
+  <% @item.comments.each do |comment| %>
+      <h1><%= link_to comment.title, [@item, comment] %></h1>
+      <h3><%= comment.rating %></h3>
+      <p>Title: <%= comment.title %></p>
+      <p>Review: <%= comment.body %></p>
+      <hr>
+  <% end %>
+
+<div class="controls mt-3 mb-3">
+<%= link_to 'Back', department_path %> |
+<%= link_to 'Add Comments', new_item_comment_path(@item) %> |
+<%= link_to 'View Comments', item_comments_path(@item) %> |
+<%= link_to 'Edit Item', edit_department_item_path(@department) %> |
+<%= link_to 'Delete', [@department, @item], method: :delete %> |
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="itemModalCenter" tabindex="-1" role="dialog" aria-labelledby="itemModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="itemModalLongTitle">Checkout</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h1><%= @item.name %></h1>
+        <p>Has been added to you cart</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Continue Shopping</button>
+      </div>
+    </div>
+  </div>
+</div>
